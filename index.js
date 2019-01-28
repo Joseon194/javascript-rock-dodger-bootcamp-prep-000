@@ -1,3 +1,6 @@
+/**
+ * Don't change these constants!
+ */
 const DODGER = document.getElementById('dodger')
 const GAME = document.getElementById('game')
 const GAME_HEIGHT = 400
@@ -57,13 +60,10 @@ function createRock(x) {
 }
 
 function endGame() {
-  clearInterval(gameInterval);
-  ROCKS.forEach(function(rock)
-      {rock.remove()
-      });
-  document.removeEventListener('keydown',moveDodger);
-  return alert('YOU LOSE!');
-}
+  while(ROCKS.length > 0){
+    GAME.removeChild(ROCKS[0]);
+    ROCKS.shift();
+  }
 
   clearInterval(gameInterval);
   window.removeEventListener('keydown', moveDodger);
